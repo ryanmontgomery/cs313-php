@@ -1,0 +1,163 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #272727;
+    font-family: 'Roboto Slab', serif;
+}
+
+h1, h2, h3, h5, h6 {
+    color: white;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.top-nav {
+    background-color: white;
+    overflow: hidden;
+}
+
+.top-nav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.top-nav a:hover {
+    background-color: #272727;
+}
+
+.icon:hover {
+    color: white;
+}
+
+.top-nav .icon {
+    display: none;
+}
+
+#header {
+    background-color: #747474;
+    color: black;
+    padding: 50px;
+}
+
+#nav-home:hover {
+    color: #FFE400;
+    text-decoration: underline;
+    background-color: #272727;
+}
+
+#nav-assignments:hover {
+    color: #14A76C;
+    text-decoration: underline;
+}
+
+#nav-about:hover {
+    color: #FF652F;
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+    .top-nav a:not(:first-child) {
+        display: none;
+    }
+
+    .top-nav a.icon {
+        float: right;
+        display: block;
+    }
+
+    .top-nav.responsive {
+        position: relative;
+    }
+
+    .top-nav.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .top-nav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+main {
+    margin: 2em 2em;
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    flex-flow: column;
+    width: 30%;
+    margin: 0 1.5% 0 1.5%;
+}
+
+.col-40 {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.col-80 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.col-40 img, .col-80 img {
+    width: 100%;
+}
+
+.col a {
+    text-decoration: none;
+}
+
+hr {
+    margin: 0 2em;
+}
+
+footer p {
+   font-size: 1.2em;
+   line-height: 100px;
+   text-align: center;
+   color: #747474;
+   font-family: 'Roboto', sans-serif;
+}
+
+.page-header {
+    text-align: left;
+}
+
+#assignment {
+    color: #14A76C;
+}
+
+.about-color {
+    color: #FF652F;
+}
+
+.assignments-color {
+    color: #14A76C;
+}
+
+.picture-caption {
+    font-size: 2.5em;
+}
+
+main {
+    color: white;
+}
+
+main a {
+    color: #FF652F;
+}
