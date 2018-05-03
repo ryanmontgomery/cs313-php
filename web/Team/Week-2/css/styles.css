@@ -1,0 +1,20 @@
+#div1 {
+    background-color: red;
+}
+
+#div2 {
+    background-color: yellow;
+}
+
+#div3 {
+    background-color: blue;
+}
+
+.myDivs {
+    font-family: sans-serif;
+    font-size: 1.2em;
+}
+
+.myDivs:hover {
+    font-weight: 1000;
+}
