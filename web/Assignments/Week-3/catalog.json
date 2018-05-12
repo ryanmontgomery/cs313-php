@@ -1,0 +1,23 @@
+{
+    "1": {
+        "PetID" : 1,
+        "Name" : "Dog",
+        "Price" : 169.99,
+        "Description" : "Look how cute he is! We only have one dog, so we'll clone it and send you a puppy!",
+        "Picture" : "img/dog.jpeg"
+    },
+    "2": {
+        "PetID" : 2,
+        "Name" : "Cat",
+        "Price" : 149.99,
+        "Description" : "Look how cute she is! We only have one cat, so we'll clone it and send you a kitty!",
+        "Picture" : "img/cat.jpeg"
+    },
+    "3": {
+        "PetID" : 3,
+        "Name" : "Guinea Pig",
+        "Price" : 49.99,
+        "Description" : "Look how cute he is! We only have one guinea pig, so we'll clone it and send you a piggy!",
+        "Picture" : "img/guinea-pig.jpeg"
+    }
+}
