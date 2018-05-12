@@ -8,6 +8,7 @@
     
     <h3>Week 3</h3>
     <a href="Team/Week-3/index.php">Teach - 03</a>
+    <a href="Assignments/Week-3/index.php">Prove - PHP Shopping Cart</a>
 
     <h3>Week 2</h3>
     <a href="Team/Week-2/index.html">Teach - 02</a>
