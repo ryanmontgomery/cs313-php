@@ -1,7 +1,9 @@
 <p>Hello</p>
 <?php
-
-$dbUrl = getenv('postgres://vyspfogwrfyfsv:8bbdb1ac5d1e0f645acfd30921b63092716f07f20eae6e991a4ed6662bc65bae@ec2-23-23-142-5.compute-1.amazonaws.com:5432/db3nf2kbu5ee1j');
+/* 
+---------------- HEROKU --------------------
+*/
+$dbUrl = getenv('DATABASE_URL');
 
 $dbopts = parse_url($dbUrl);
 
@@ -18,7 +20,28 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+/*
+try
+{
+  $user = 'postgres';
+  $password = 'monkeytoo2';
+  $db = new PDO('pgsql:host=localhost;dbname=myTestDB', $user, $password);
 
+  // this line makes PDO give us an exception when there are problems,
+  // and can be very helpful in debugging! (But you would likely want
+  // to disable it for production environments.)
+  $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch (PDOException $ex)
+{
+  echo 'Error!: ' . $ex->getMessage();
+  die();
+}
+
+$stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+*/
 echo '<h1>Sripture Resources</h1>';
 
 foreach($rows as $row) {
