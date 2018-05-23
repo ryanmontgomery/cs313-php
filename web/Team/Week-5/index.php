@@ -15,7 +15,7 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(!empty($_POST['book'])) {
-    $book = FILTER_SANITIZE_STRING($_POST['book']);
+    $book = $_POST['book'];
 
     $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE \'Mosiah\'');
     //$stmt->bindValue(':book', $book::PARAM_STR);
