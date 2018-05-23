@@ -17,8 +17,8 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if(!empty($_POST['book'])) {
     $book = FILTER_SANITIZE_STRING($_POST['book']);
 
-    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
-    $stmt->bindValue(':book', $book::PARAM_STR);
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE \'Mosiah\'');
+    //$stmt->bindValue(':book', $book::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -42,7 +42,7 @@ else {
 <!-- STRETCH CHALLENGE 01 -->
 
 <form action="index.php" method="post">
-    <label for="book">Book</label>
+    <strong><label for="book">Book:</label></strong>
     <input type="text" name="book" id="book">
     <input type="submit" value="Search">
 </form>
