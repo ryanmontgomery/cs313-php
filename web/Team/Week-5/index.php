@@ -37,8 +37,8 @@ echo '<h1>Scripture Resources</h1>';
 
 foreach($rows as $row) {
     echo '<p>';
-    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
-    echo '"' . $row['content'] . '"';
+    echo '<a href="details.php?id=' . $row['scripture_id'] . '">';
+    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong></a>';
     echo '</p>';
 }
 
@@ -52,5 +52,3 @@ foreach($rows as $row) {
     <input type="text" name="book" id="book">
     <input type="submit" value="Search">
 </form>
-
-
