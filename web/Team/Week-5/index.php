@@ -14,6 +14,8 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+$rows = null;
+
 if(!empty($_POST['book'])) {
     //$book = $_POST['book'];
     $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
@@ -23,22 +25,24 @@ if(!empty($_POST['book'])) {
     $stmt->bindValue(':book', $book, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
 }
 
 else {
     $stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    echo '<h1>Scripture Resources</h1>';
-
-    foreach($rows as $row) {
-        echo '<p>';
-        echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
-        echo '"' . $row['content'] . '"';
-        echo '</p>';
-    }
 }
+
+echo '<h1>Scripture Resources</h1>';
+
+foreach($rows as $row) {
+    echo '<p>';
+    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
+    echo '"' . $row['content'] . '"';
+    echo '</p>';
+}
+
 
 ?>
 <!-- STRETCH CHALLENGE 01 -->
