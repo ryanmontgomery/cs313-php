@@ -19,7 +19,7 @@ if(!empty($_POST['book'])) {
     //$book = '%' . $book . '%';
     var_dump($book);
 
-    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE ":book"');
     $stmt->bindValue(':book', $book, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
