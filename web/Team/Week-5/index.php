@@ -15,11 +15,11 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(!empty($_POST['book'])) {
-    $book = $_POST['book'];
-    //$book = '%' . $book . '%';
+    //$book = $_POST['book'];
+    $book = filter_input(INPUT_POST, 'book', FILTER_SANITIZE_STRING);
     var_dump($book);
 
-    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE ":book"');
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
     $stmt->bindValue(':book', $book, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
