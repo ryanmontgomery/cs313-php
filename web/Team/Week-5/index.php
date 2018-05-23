@@ -14,15 +14,37 @@ $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPass
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
-$stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if(!empty($_POST['book'])) {
+    $book = FILTER_SANITIZE_STRING($_POST['book']);
 
-echo '<h1>Sripture Resources</h1>';
-
-foreach($rows as $row) {
-    echo '<p>';
-    echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
-    echo '"' . $row['content'] . '"';
-    echo '</p>';
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
+    $stmt->bindValue(':book', $book::PARAM_STR);
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+else {
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures');
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo '<h1>Scripture Resources</h1>';
+
+    foreach($rows as $row) {
+        echo '<p>';
+        echo '<strong>' . $row['book'] . ' ' . $row['chapter'] . ':' . $row['verse'] . ' - </strong>';
+        echo '"' . $row['content'] . '"';
+        echo '</p>';
+    }
+}
+
+?>
+<!-- STRETCH CHALLENGE 01 -->
+
+<form action="index.php" method="post">
+    <label for="book">Book</label>
+    <input type="text" name="book" id="book">
+    <input type="submit" value="Search">
+</form>
+
+
