@@ -16,7 +16,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(!empty($_POST['book'])) {
     $book = $_POST['book'];
-    $book = '%' . $book . '%';
+    //$book = '%' . $book . '%';
     var_dump($book);
 
     $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
