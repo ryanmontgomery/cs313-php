@@ -17,8 +17,8 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 if(!empty($_POST['book'])) {
     $book = $_POST['book'];
 
-    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE \'Mosiah\'');
-    //$stmt->bindValue(':book', $book::PARAM_STR);
+    $stmt = $db->prepare('SELECT * FROM scriptures.scriptures WHERE book LIKE :book');
+    $stmt->bindValue(':book', $book::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
