@@ -31,7 +31,7 @@ if(!empty($_GET['id'])){
         echo '<p>';
         echo $row['content'];
         echo '</p>';
-}
+    }
 }
 
 else {

@@ -1,4 +1,0 @@
-CREATE TABLE scriptures
-(scripture_id SERIAL PRIMARY KEY,
-
-);
