@@ -26,7 +26,7 @@ function search_patron_list($last_name) {
     global $db;
     $last_name = '%' . $last_name . '%';
     $query = 'SELECT * FROM library.patron
-              WHERE last_name LIKE :last_name';
+              WHERE lower(last_name) LIKE lower(:last_name)';
     $statement = $db->prepare($query);
     $statement->bindValue(":last_name", $last_name);
     $statement->execute();

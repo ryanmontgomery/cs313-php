@@ -29,7 +29,7 @@ function book_by_title($title) {
     global $db;
     $title = '%' . $title . '%';
     $query = 'SELECT * FROM library.book
-              WHERE title LIKE :title
+              WHERE lower(title) LIKE lower(:title)
               ORDER BY title ASC';
     $statement = $db->prepare($query);
     $statement->bindValue(':title', $title);
