@@ -6,6 +6,9 @@
 <main>
     <h2 id="assignment" class="page-header">Assignments</h2>
 
+    <h3>Week 6</h3>
+    <a href="Assignments/Week-6/index.php">Prove - PHP DB Update</a><br>
+
     <h3>Week 5</h3>
     <a href="Assignments/Week-5/index.php">Prove - PHP Data Access</a><br>
     
