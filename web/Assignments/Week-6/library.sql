@@ -88,6 +88,13 @@ VALUES
  'In December 2007 Brandon was chosen by Harriet McDougal Rigney to complete Robert Jordan''s Wheel of Time series after his untimely passing. 2009''s The Gathering Storm and 2010''s Towers of Midnight was followed by the final volume in the series, A Memory of Light, in January 2013.'
 );
 
+INSERT INTO library.author (first_name, last_name, bio)
+VALUES
+('J.K.',
+ 'Rowling',
+ 'J.K. Rowling was a struggling mother when she wrote the beginnings of Harry Potter and the Sorcerer''s stone on scraps of paper at a local cafe. But her efforts soon paid off, as she received an unprecedented award from the Scottish Arts Council enabling her to finish the book. Since then, the debut novel has become an international phenomenon, garnering rave reviews and major awards, including the British Book Awards Children''s Book of the Year, and the Smarties prize.'
+);
+
 INSERT INTO library.book (author_id, title, published_date)
 VALUES
 (1,
@@ -95,9 +102,51 @@ VALUES
  '2010-08-01'
 );
 
+INSERT INTO library.book (author_id, title, published_date)
+VALUES
+(1,
+ 'Words of Radiance',
+ '2014-03-04'
+);
+
+INSERT INTO library.book (author_id, title, published_date)
+VALUES
+(1,
+ 'Oathbringer',
+ '2017-11-01'
+);
+
+INSERT INTO library.book (author_id, title, published_date)
+VALUES
+(2,
+ 'Harry Potter and the Sorcerer''s Stone',
+ '1999-09-01'
+);
+
+INSERT INTO library.book (author_id, title, published_date)
+VALUES
+(2,
+ 'Harry Potter and the Chamber of Secrets',
+ '2000-09-01'
+);
+
+INSERT INTO library.book (author_id, title, published_date)
+VALUES
+(2,
+ 'Harry Potter and the Prisoner of Azkaban',
+ '2001-09-01'
+);
+
+INSERT INTO library.book (author_id, title, published_date)
+VALUES
+(2,
+ 'Harry Potter and the Goblet of Fire',
+ '2002-09-01'
+);
+
 INSERT INTO library.due_date (patron_id, book_id, return_by_date, is_checked_out)
 SELECT 
  1,
  1,
- CURRENT_DATE - INTERVAL '14 day',
+ CURRENT_DATE + INTERVAL '14 day',
  TRUE;

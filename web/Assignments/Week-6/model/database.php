@@ -13,7 +13,7 @@ try {
 }
 catch (PDOException $e) {
     $error_message = $e->getMessage();
-    echo $e . "Doesn't work...";
+    echo $e . "Cannot connect to database...";
     exit();
 }
 */

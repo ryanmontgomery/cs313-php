@@ -17,9 +17,6 @@ include 'view/_header.php';
 <h2>Books</h2>
 <a href="index.php?action=book_dashboard">Go</a>
 
-<h2>Due Dates</h2>
-<a href="index.php?action=due_dates_dashboard">Go</a>
-
 <?php
 include 'view/_footer.php';
 ?>

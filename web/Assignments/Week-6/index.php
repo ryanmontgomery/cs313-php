@@ -245,24 +245,93 @@ else if ($action == 'search_books') {
 }
 
 //---------------------------------------------------------------------
-//DUE DATES AND CHECKED OUT BOOKS - GET OVERDUE, GET PATRON CHECKED OUT
+//CHECK OUT BOOKS
 //---------------------------------------------------------------------
 
-else if ($action = 'due_dates_dashboard') {
-    $page = 'due_dates_dashboard';
-    include 'view/due_dates_dashboard.php';
+else if ($action == 'check_out_books') {
+    $page = 'check_out_dashboard';
+    include 'view/checkout_dashboard.php';
+    include 'view/_footer.php';    
 }
 
-else if ($action = 'get_overdue_books') {
-    $page = 'due_dates_dashboard';
-    $overdue_books = get_overdue_books();
-    include 'view/overdue_books_list.php';
-}
-
-else if ($action = 'get_patrons_books') {
-    $page = 'due_dates_dashboard';
+else if ($action == 'get_patrons_books') {
+    $page = 'check_out_dashboard';
+    $checkout_error = '';
     $patron_id = filter_input(INPUT_POST, 'patron_id', FILTER_SANITIZE_NUMBER_INT);
+    $patron = get_patron($patron_id);
     $checked_out_books = get_patrons_books($patron_id);
-    include 'view/patron_checked_out_list.php';
+    include 'view/checkout_dashboard.php';
+    if(isset($patron) && $patron != FALSE) { include 'view/checkout_book_dashboard.php'; }
+    if(isset($checked_out_books) && $checked_out_books != FALSE) { include 'view/patron_checked_out_list.php'; }
+    include 'view/_footer.php';
 }
+
+else if ($action == 'checkout_book') {
+    $page = 'check_out_dashboard';
+    $checkout_error = '';
+    $patron_id = filter_input(INPUT_POST, 'patron_id', FILTER_SANITIZE_NUMBER_INT);
+    $book_id = filter_input(INPUT_POST, 'book_id', FILTER_SANITIZE_NUMBER_INT);
+    $patron = get_patron($patron_id);
+    $status = is_it_checked_out($book_id);
+    
+    if($status['book_id'] == $book_id) {
+        $checkout_error = '<p class="error">This book is already checked out.</p>';
+    }
+    else {
+        try {
+            check_out_book($patron_id, $book_id);
+        }
+        catch(Exception $e) {
+            $checkout_error = '<p class="error">This book does not exist.</p>';
+        }
+    }
+    
+    $checked_out_books = get_patrons_books($patron_id);
+    include 'view/checkout_dashboard.php';
+    if(isset($patron) && $patron != FALSE) { include 'view/checkout_book_dashboard.php'; }
+    if(isset($checked_out_books) && $checked_out_books != FALSE) { include 'view/patron_checked_out_list.php'; }
+    include 'view/_footer.php';
+}
+
+//---------------------------------------------------------------------
+//CHECK IN BOOKS
+//---------------------------------------------------------------------
+
+else if ($action == 'check_in_books') {
+    $page = 'check_in_dashboard';
+    $checked_in_verification = '';
+    $checked_in_error = '';
+    include 'view/checkin_dashboard.php';
+    include 'view/_footer.php';    
+}
+
+else if ($action == 'checkin_book') {
+    $page = 'check_in_dashboard';
+    $checked_in_verification = '';
+    $checked_in_error = '';
+    $book_id = filter_input(INPUT_POST, 'book_id', FILTER_SANITIZE_NUMBER_INT);
+    $book = get_book($book_id);
+
+    if (!$book){
+        $checked_in_error = '<p class="error">Checked out book does not exist.</p>';
+
+    } else{
+        $status = is_it_checked_out($book_id);
+
+        if($status['book_id'] == $book_id) {
+            check_in_book($book_id);
+            $checked_in_verification = '<p class="verification">' . $book['title'] . ' is successfully checked in.';
+        }
+        else {
+            $checked_in_error = '<p class="error">' . $book['title'] . ' is not checked out.';
+        }
+    }
+
+
+
+    
+    include 'view/checkin_dashboard.php';
+    include 'view/_footer.php';  
+}
+
 ?>

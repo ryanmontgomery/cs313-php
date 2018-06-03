@@ -23,7 +23,6 @@
             <a href="index.php?action=check_out_books" class="<?php echo ($page == 'check_out_dashboard' ? 'active' : '')?>">Check Out</a>
             <a href="index.php?action=check_in_books" class="<?php echo ($page == 'check_in_dashboard' ? 'active' : '')?>">Check In</a>
             <a href="index.php?action=patron_dashboard" class="<?php echo ($page == 'patron_dashboard' ? 'active' : '')?>">Patrons</a>
-            <a href="index.php?action=due_dates_dashboard" class="<?php echo ($page == 'due_dates_dashboard' ? 'active' : '')?>">Due Dates</a>
             <a href="index.php?action=author_dashboard" class="<?php echo ($page == 'author_dashboard' ? 'active' : '')?>">Authors</a>
             <a href="index.php?action=book_dashboard" class="<?php echo ($page == 'book_dashboard' ? 'active' : '')?>">Books</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
